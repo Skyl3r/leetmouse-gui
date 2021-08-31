@@ -1,7 +1,7 @@
 # leetmouse-gui
 Simple GUI for leetmouse (https://github.com/systemofapwne/leetmouse)
 
-![image](https://i.imgur.com/7ZDHzZO.png)
+![image](https://i.imgur.com/SwWeGPq.png)
 
 ## Requirements
 - PySimpleGUIQt
