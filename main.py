@@ -36,7 +36,7 @@ while True:
 
         UpdateParameter.set("1")
 
-    if event == "OK" or event == sg.WIN_CLOSED:
+    if event == sg.WIN_CLOSED:
         break
 
 
