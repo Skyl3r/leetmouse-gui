@@ -2,7 +2,7 @@
 Simple GUI for leetmouse (https://github.com/systemofapwne/leetmouse). This program assumes you've already installed the leetmouse driver.
 Please note it lacks form validation. All fields should be formatted as floats with an 'f' appended to the end, as in the example photo below.
 
-![image](https://i.imgur.com/SwWeGPq.png)
+![image](https://i.imgur.com/RFpL59Z.png)
 
 ## Requirements
 - PySimpleGUIQt
