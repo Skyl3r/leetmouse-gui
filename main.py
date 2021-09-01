@@ -28,7 +28,6 @@ AccelerationModePlainText = "Linear"
 
 # get the acceleration mode to set the combo box
 for mode, key in ModeLookup.items():
-    print("Comparing " + str(AccelerationMode) + " with " + str(key))
     if str(AccelerationMode) == str(key):
         AccelerationModePlainText = mode
 
