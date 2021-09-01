@@ -13,3 +13,9 @@ Please note it lacks form validation. All fields should be formatted as floats w
 
 Since this program must change module parameters it needs root access:
 ``` sudo python3 main.py ```
+
+
+## Todo
+- Form validation
+- Error catching and handling for file I/O
+- Graph to display acceleration curve (output vs input)
