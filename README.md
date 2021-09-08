@@ -19,3 +19,4 @@ Since this program must change module parameters it needs root access:
 - Form validation
 - Error catching and handling for file I/O
 - Graph to display acceleration curve (output vs input)
+- Restructure so that fields are ordered in a way that makes sense, IE mode & mode specific options together, general options together
