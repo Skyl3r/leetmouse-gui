@@ -5,39 +5,35 @@ from ModuleParameter import ModuleParameter
 Parameters = {
     "Acceleration": ModuleParameter("Acceleration"),
     "Sensitivity": ModuleParameter("Sensitivity"),
-    "Post Scale X": ModuleParameter("PostScaleX"),
-    "Post Scale Y": ModuleParameter("PostScaleY"),
-    "Pre Scale X": ModuleParameter("PreScaleX"),
-    "Pre Scale Y": ModuleParameter("PreScaleY"),
     "Speed Cap": ModuleParameter("SpeedCap"),
     "Sensitivity Cap": ModuleParameter("SensitivityCap"),
     "Offset": ModuleParameter("Offset"),
     "Scrolls per Tick": ModuleParameter("ScrollsPerTick"),
+    "Midpoint": ModuleParameter("Midpoint")
 }
-if os.path.isfile("/sys/module/leetmouse/Exponent"):
-    Parameters["Exponent"] = ModuleParameter("Exponent")
+
+Parameters["Exponent"] = ModuleParameter("Exponent")
 
 ModeLookup = {
     "Linear": 1,
-    "Classic": 2
+    "Classic": 2,
+    "Motivity": 3
 }
 
 # Special cases
 UpdateParameter = ModuleParameter("update")
-if os.path.isfile("/sys/module/leetmouse/AccelerationMode"):
-    AccelerationModeParameter = ModuleParameter("AccelerationMode")
-    AccelerationMode = AccelerationModeParameter.parameterValue
-    AccelerationModePlainText = "Linear"
+AccelerationModeParameter = ModuleParameter("AccelerationMode")
+AccelerationMode = AccelerationModeParameter.parameterValue
+AccelerationModePlainText = "Linear"
 
-    # get the acceleration mode to set the combo box
-    for mode, key in ModeLookup.items():
-        if str(AccelerationMode) == str(key):
-            AccelerationModePlainText = mode
+# get the acceleration mode to set the combo box
+for mode, key in ModeLookup.items():
+    if str(AccelerationMode) == str(key):
+        AccelerationModePlainText = mode
 
 layout = [[sg.Text("LEETMOUSE")]]
-if os.path.isfile("/sys/module/leetmouse/AccelerationMode"):
-    layout.append([sg.Text("Mode: "),
-     sg.Combo(["Linear", "Classic"], default_value=AccelerationModePlainText, enable_events=True, key="modecombo")])
+layout.append([sg.Text("Mode: "),
+               sg.Combo(["Linear", "Classic", "Motivity"], default_value=AccelerationModePlainText, enable_events=True, key="modecombo")])
 
 for param in Parameters:
     layout.append([sg.Text(param), sg.InputText(default_text=Parameters[param].parameterValue, key=Parameters[param].parameterName)])
@@ -53,8 +49,7 @@ while True:
         # Update parameters
         for param in Parameters:
             Parameters[param].set(window[Parameters[param].parameterName].get())
-        if os.path.isfile("/sys/module/leetmouse/AccelerationMode"):
-            AccelerationModeParameter.set(str(AccelerationMode))
+        AccelerationModeParameter.set(str(AccelerationMode))
 
         # Set update flag so LEETMOUSE knows to read changes
         UpdateParameter.set("1")
